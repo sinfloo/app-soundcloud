@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +21,8 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Home
-						<span class="sr-only">(current)</span>
+				<li class="nav-item active"><a class="nav-link"
+					href="Controlador?opc=1">Home <span class="sr-only">(current)</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
 				<li class="nav-item dropdown"><a
@@ -46,32 +47,59 @@
 	</nav>
 	<div class="container">
 		<h3>${saludo}</h3>
-		<div class="card" style="width: 18rem;">
-			<div class="card-body">
-				<h5 class="card-title">Registro de Usuario</h5>
-				<h6 class="card-subtitle mb-2 text-muted">Datos del Usuario</h6>
-				<form action="Controlador" method="POST">
-					<div class="form-group">
-						<label>ID</label><input type="text" name="txtId"
-							class="form-control">
+		<div class="row">
+			<div class="form-group col-lg-4">
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<h5 class="card-title">Registro de Usuario</h5>
+						<h6 class="card-subtitle mb-2 text-muted">Datos del Usuario</h6>
+						<form action="Controlador" method="POST">
+							<div class="form-group">
+								<label>ID</label><input type="text" name="txtId"
+									class="form-control">
+							</div>
+							<div class="form-group">
+								<label>NOMBRES</label><input type="text" name="txtNombres"
+									class="form-control">
+							</div>
+							<div class="form-group">
+								<label>APELLIDOS</label><input type="text" name="txtApellidos"
+									class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Email</label><input type="text" name="txtEmail"
+									class="form-control">
+							</div>
+							<div>
+								<button type="submit" class="btn btn-primary" name="opc"
+									value="2">Registrar</button>
+							</div>
+						</form>
 					</div>
-					<div class="form-group">
-						<label>NOMBRES</label><input type="text" name="txtNombres"
-							class="form-control">
-					</div>
-					<div class="form-group">
-						<label>APELLIDOS</label><input type="text" name="txtApellidos"
-							class="form-control">
-					</div>
-					<div class="form-group">
-						<label>Email</label><input type="text" name="txtEmail"
-							class="form-control">
-					</div>
-					<div>
-						<button type="submit" class="btn btn-primary" name="accion"
-							value="RegistrarUser">Registrar</button>
-					</div>
-				</form>
+				</div>
+			</div>
+			<div class="form-group col-lg-8">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>NOMBRES</th>
+							<th>APELLIDOS</th>
+							<th>CORREO</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="u" items="${usuarios}">
+							<tr>
+								<td>${u.getId()}</td>
+								<td>${u.getFirstName()}</td>
+								<td>${u.getLastName()}</td>
+								<td>${u.getEmail()}</td>
+							</tr>
+						</c:forEach>
+
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
