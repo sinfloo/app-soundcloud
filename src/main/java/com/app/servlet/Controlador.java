@@ -49,11 +49,9 @@ public class Controlador extends HttpServlet {
 			break;
 		case "2":
 			Transaction transaction2 = null;
-			int id = Integer.parseInt(request.getParameter("txtId"));
 			String firstName = request.getParameter("txtNombres");
 			String lastName = request.getParameter("txtApellidos");
-			String email = request.getParameter("txtEmail");
-			System.out.println(id);
+			String email = request.getParameter("txtEmail");			
 			Usuario usuario = new Usuario(firstName, lastName, email);
 			try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 				// start a transaction

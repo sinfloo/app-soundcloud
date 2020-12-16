@@ -55,7 +55,7 @@
 						<h6 class="card-subtitle mb-2 text-muted">Datos del Usuario</h6>
 						<form action="Controlador" method="POST">
 							<div class="form-group">
-								<label>ID</label><input type="text" name="txtId"
+								<label>ID</label><input type="text" name="txtId" readonly="readonly"
 									class="form-control">
 							</div>
 							<div class="form-group">
